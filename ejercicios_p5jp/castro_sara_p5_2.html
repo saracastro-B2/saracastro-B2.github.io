@@ -1,0 +1,103 @@
+<!doctype html> <!-- Indica que es un documento HTML --> 
+
+<html> 
+
+  <head> 
+
+    <meta charset="utf-8" /> <!-- Permite usar acentos y caracteres españoles --> 
+
+    <title>Apuntes p5.js</title> <!-- Nombre que aparecerá en la pestaña del navegador --> 
+
+  
+
+    <!-- Enlace a la librería p5.js alojada en internet --> 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script> 
+
+  </head> 
+
+  
+
+  <body> 
+
+    
+
+    <script> 
+
+function setup() { 
+
+  createCanvas(400, 400);   
+
+  background(200); 
+
+   
+
+  // Casa  
+
+  stroke(0, 0, 0); 
+
+  strokeWeight(1);         
+
+  fill(200, 210, 150); 
+
+  rect(120, 120, 200, 200); 
+
+  
+
+  // Puerta          
+
+  fill(150, 75, 0); 
+
+  rect(190, 230, 65, 90); 
+
+  
+
+  // Manecilla 
+
+  stroke(253, 232, 15); 
+
+  strokeWeight(3); 
+
+  line(200, 278, 205, 278); 
+
+  
+
+  // Ventana 1
+
+  stroke(150, 75, 0); 
+
+  strokeWeight(1);              
+
+  fill(176, 196, 222); 
+
+  rect(140, 177, 35, 40); 
+  
+   // Ventana 2
+
+  stroke(150, 75, 0); 
+
+  strokeWeight(1);              
+
+  fill(176, 196, 222); 
+
+  rect(260, 177, 35, 40); 
+
+
+
+  // Techo 
+
+  stroke(0, 0, 0); 
+
+  strokeWeight(1); 
+
+  fill(175,215,115); 
+
+  triangle(100,120,220,30,340,120); 
+
+} 
+
+</script> 
+
+  </body> 
+
+</html> 

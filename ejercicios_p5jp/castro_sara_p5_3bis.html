@@ -1,0 +1,226 @@
+<!doctype html>   
+
+  
+
+<html>  
+
+  <head>  
+
+    <meta charset="utf-8" />      
+
+  
+
+<title>Apuntes p5.js</title>  
+
+     
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>  
+
+  </head>  
+
+  
+
+  <body>  
+
+   
+
+    <script>  
+
+  function setup() {  
+
+  createCanvas(400, 400);     
+
+   
+
+  background( 176, 196, 222);   
+
+   
+
+  // césped 
+
+  fill( 107, 142, 35); 
+
+  rect( 0, 300, 400, 300); 
+
+   
+
+  // casa 
+
+  stroke( 0, 0, 0); 
+
+  fill( 255); 
+
+  rect( 50, 170, 250, 130); 
+
+   
+
+  // techo 
+
+  fill( 128, 0, 0); 
+
+  triangle(50, 170, 170, 110, 300, 170) 
+
+  
+
+  // ventana 
+
+  stroke( 0, 0, 0); 
+
+  fill( 176, 196, 222); 
+
+  rect( 80, 190, 30, 45); 
+
+   
+
+  // ventana cocina 
+
+  stroke( 0, 0, 0); 
+
+  fill( 176, 196, 222); 
+
+  rect( 80, 250, 30, 30); 
+
+   
+
+  // ventana 
+
+  stroke( 0, 0, 0); 
+
+  fill( 176, 196, 222); 
+
+  rect( 220, 190, 30, 45); 
+
+   
+
+  // ventana corredor 
+
+  stroke( 0, 0, 0); 
+
+  fill( 176, 196, 222); 
+
+  rect( 140, 190, 60, 35); 
+
+   
+
+  // puerta 
+
+  stroke( 0, 0, 0); 
+
+  fill( 150, 75, 0); 
+
+  rect( 140, 250, 30, 50); 
+
+   
+
+  // arcoíris 
+
+  noFill(); 
+
+  stroke(255, 0, 0);    
+
+  strokeWeight(10);        
+
+  arc(300, 130, 130, 110, PI, 0); 
+
+
+
+  noFill(); 
+
+  stroke(255, 112, 40);    
+
+  strokeWeight(10);        
+
+  arc(300, 130, 120, 100, PI, 0); 
+
+
+  noFill(); 
+
+  stroke(255, 192, 5);    
+
+  strokeWeight(10);        
+
+  arc(300, 130, 110, 90, PI, 0); 
+
+
+  noFill(); 
+
+  stroke(96, 80, 220);    
+
+  strokeWeight(10);        
+
+  arc(300, 130, 90, 70, PI, 0);  
+
+ 
+  noFill(); 
+
+  stroke(153, 102, 204);    
+
+  strokeWeight(10);        
+
+  arc(300, 130, 80, 60, PI, 0);   
+
+ 
+  // sol 
+
+  stroke( 0, 0, 0); 
+
+  strokeWeight(1); 
+
+  fill(255, 192, 5) 
+
+  circle(60, 70, 50) 
+
+ 
+  //coche 
+
+  stroke( 0, 0, 0); 
+
+  strokeWeight(1); 
+
+  fill(255, 0, 0); 
+
+  arc(330, 340, 80, 70, PI, 0); 
+
+ 
+  stroke( 0, 0, 0); 
+
+  strokeWeight(1); 
+
+  fill(176, 196, 222); 
+
+  arc(330, 335, 60, 40, PI, 0); 
+
+
+  stroke( 0); 
+
+  strokeWeight(1); 
+
+  fill( 255, 0, 0); 
+
+  rect( 270, 340, 100, 35); 
+
+
+  stroke( 0, 0, 0); 
+
+  strokeWeight(1); 
+
+  fill( 0, 0, 0); 
+
+  arc(290, 375, 20, 20, 0, PI); 
+
+
+  stroke( 0, 0, 0); 
+
+  strokeWeight(1); 
+
+  fill( 0, 0, 0); 
+
+  arc(350, 375, 20, 20, 0, PI);
+
+}
+
+    </script>  
+
+  </body>  
+
+</html> 

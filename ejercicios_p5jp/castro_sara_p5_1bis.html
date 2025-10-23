@@ -1,0 +1,38 @@
+
+<!doctype html> <!-- Indica que es un documento HTML -->
+<html>
+  <head>
+    <meta charset="utf-8" /> 
+    <title>Tu nombre</title> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+  </head>
+
+  <body>
+    <h1> Mi inicial </h1>
+
+
+    <script>
+function setup() {
+  createCanvas(800, 800);
+  background( 137, 243, 54);
+  strokeWeight(4);
+
+  stroke(random(255), random(255), random(255));
+  line( 300, 150, 500, 150);
+  strokeWeight(4);
+  stroke(random(255), random(255), random(255));
+  line(500, 325, 500, 500);
+  strokeWeight(4);
+  stroke(random(255), random(255), random(255));
+  line( 300, 500, 500, 500);
+  strokeWeight(4);
+  stroke(random(255), random(255), random(255));
+  line(300, 150, 300, 325);
+  strokeWeight(4);
+   stroke(random(255), random(255), random(255));
+  line( 300, 325, 500, 325);
+  strokeWeight(4);
+}
+    </script>
+  </body>
+</html>
