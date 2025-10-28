@@ -1,0 +1,56 @@
+<!doctype html>  
+
+<html> 
+  <head> 
+    <meta charset="utf-8" />     
+
+<title>Apuntes p5.js</title> 
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script> 
+  </head> 
+ 
+  <body> 
+  
+<script>
+function setup() {
+  createCanvas(800, 500);
+  background(240);
+  noStroke();
+
+ 
+  textSize(28);
+  textAlign(CENTER, TOP);
+  fill(227, 66, 51);
+  text("Sara Castro Montes", 320, 16);
+
+  textSize(16);
+  fill( 229, 218, 70);
+  text("Mis gustos", 320, 52);
+
+    textSize(12);
+  fill(179, 72, 72);
+  text("Me gusta el baile, mi serie favorita es Stranger Things y mi banda favorita son los Hombres G", 320, 82);
+
+  textSize(12);
+  fill(153, 204, 255);
+  textAlign(LEFT, TOP);
+  text("(0, 0)", 6, 6);        // arriba-izquierda
+
+  textAlign(RIGHT, TOP);
+  text("(640, 0)", 634, 6);    // arriba-derecha (hemos escrito 640 a mano)
+
+  textAlign(LEFT, BOTTOM);
+  text("(0, 360)", 6, 354);    // abajo-izquierda (360 a mano)
+
+  textAlign(RIGHT, BOTTOM);
+  text("(640, 360)", 634, 354);// abajo-derecha
+
+  // "Centro" aproximado a mano (320, 180)
+  textAlign(CENTER, CENTER);
+  textSize(14);
+  fill(30);
+  text("Centro (320, 180)", 320, 180);
+}
+    </script> 
+  </body> 
+</html> 
