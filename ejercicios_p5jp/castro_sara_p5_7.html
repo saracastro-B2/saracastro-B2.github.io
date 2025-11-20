@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>A1 — Mi escena con variables</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+  </head>
+  <body>
+  <script>
+  // A1 — Reutilización: añade movimiento con variables (sin condicionales)
+
+  // Estado del objeto que se moverá (elige: coche, nube, sol…)
+  let x, y, v, d, r; // usa las que necesites
+
+  function setup() {
+    createCanvas(400, 400);
+
+
+    // 1) Tamaños relativos coche
+    d = min(width, height) * 0.12;
+    r = d / 2;
+    Sg = 0.08*height;
+    cuerda = 1.2*Sg;
+	S = 0.1*height;
+	
+    // 2) Posición inicial relativa (evita números mágicos)
+    x = -r;              
+    y = height * 0.75;
+    xG = width / 1.15;
+    yG = height * 0.75;
+	troncoW = 0.2*S;
+	troncoH = 1.2*S;
+	copaD = 1.1*S;
+
+    // 3) Velocidad relativa al ancho
+    v = width / 200;
+    vyG = width / 900;
+  }
+    
+  function draw() {
+  background( 176, 196, 222);   
+
+  // césped 
+  fill( 107, 142, 35); 
+  rect( 0, 300, 400, 300); 
+   
+
+  // casa 
+  stroke( 0, 0, 0); 
+  fill( 255); 
+  rect( 50, 170, 250, 130); 
+
+
+  // techo 
+  fill( 128, 0, 0); 
+  triangle(50, 170, 170, 110, 300, 170) 
+
+
+  // ventana 
+  stroke( 0, 0, 0); 
+  fill( 176, 196, 222); 
+  rect( 80, 190, 30, 45); 
+
+
+  // ventana cocina 
+  stroke( 0, 0, 0); 
+  fill( 176, 196, 222); 
+  rect( 80, 250, 30, 30); 
+
+
+  // ventana 
+  stroke( 0, 0, 0); 
+  fill( 176, 196, 222); 
+  rect( 220, 190, 30, 45); 
+
+   
+  // ventana corredor 
+  stroke( 0, 0, 0); 
+  fill( 176, 196, 222); 
+  rect( 140, 190, 60, 35); 
+   
+
+  // puerta 
+
+  stroke( 0, 0, 0); 
+
+  fill( 150, 75, 0); 
+
+  rect( 140, 250, 30, 50); 
+
+   
+
+  // arcoíris 
+  noFill(); 
+  stroke(255, 0, 0);    
+  strokeWeight(10);        
+  arc(300, 130, 130, 110, PI, 0); 
+
+  noFill(); 
+  stroke(255, 112, 40);    
+  strokeWeight(10);        
+  arc(300, 130, 120, 100, PI, 0); 
+
+  noFill(); 
+  stroke(255, 192, 5);    
+  strokeWeight(10);        
+  arc(300, 130, 110, 90, PI, 0); 
+  
+  noFill(); 
+  stroke(96, 80, 220);    
+  strokeWeight(10);        
+  arc(300, 130, 90, 70, PI, 0); 
+  
+  noFill(); 
+  stroke(153, 102, 204);    
+  strokeWeight(10);        
+  arc(300, 130, 80, 60, PI, 0); 
+
+
+   // tronco
+   fill(120, 80, 40); 
+   stroke(0); 
+   strokeWeight(1);
+   rect(0.15*width - 0.5*troncoW, 0.8*height - troncoH, troncoW, troncoH)
+   // copa arbol
+   fill(40, 140, 60); 
+   circle(0.15*width, 0.8*height - troncoH - 0.3*S, copaD)
+ 
+ 
+   // coche
+   fill(255, 0, 0);	
+   stroke( 0, 0, 0); 
+   strokeWeight(1);
+   rect(x - d, y - d*0.4, d*2, d*0.8, d*0.1);
+   
+   fill(40);
+   circle(x - d*0.6, y + d*0.45, d*0.5);
+   circle(x + d*0.6, y + d*0.45, d*0.5);
+
+
+    // globo
+    fill(255, 80, 80); 
+    circle(xG, yG, Sg); 
+    stroke(60);
+    line(xG, yG + 0.5*Sg, xG, yG + 0.5*Sg + cuerda);
+	
+    // --- Movimiento (variables) ---
+    x = x + v;  // movimiento del coche
+    yG = yG - vyG;  // movimiento del globo
+	xG = xG - 0.3*vyG; // movimiento hacia la izquierda del globo
+	copaD = copaD + 0.001*S; // movimiento copa 
+	troncoH = troncoH + 0.001*S; // movimiento tronco 
+	
+    // Rotulito
+    fill(0);
+    textSize(10);
+    textAlign(LEFT, TOP);
+    text("A1 — Mi escena con variables", 10, 10);
+  }
+  </script>
+  </body>
+</html>
