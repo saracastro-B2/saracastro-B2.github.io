@@ -1,0 +1,196 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>A1 — Variables (estado + movimiento simple)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- p5.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+  </head>
+  <body>
+  <script>
+ 
+  let centerX, centerY, sunSize;
+  let xP_Tierra, yP_Tierra, dP_Tierra, diamOrbitaTierra, anguloInicialTierra, incrementAnguloTierra;
+  let xP_Mercurio, yP_Mercurio, dP_Mercurio, diamOrbitaMercurio, anguloInicialMercurio, incrementAnguloMercurio;
+  let xP_Venus, yP_Venus, dP_Venus, diamOrbitaVenus, anguloInicialVenus, incrementAnguloVenus;
+  let xP_Marte, yP_Marte, dP_Marte, diamOrbitaMarte, anguloInicialMarte, incrementAnguloMarte;
+  let xP_Júpiter, yP_Júpiter, dP_Júpiter, diamOrbitaJúpiter, anguloInicialJúpiter, incrementAnguloJúpiter;
+  let xP_Saturno, yP_Saturno, dP_Saturno, diamOrbitaSaturno, anguloInicialSaturno, incrementAnguloSaturno;
+  let xP_Urano, yP_Urano, dP_Urano, diamOrbitaUrano, anguloInicialUrano, incrementAnguloUrano;
+  let xP_Neptuno, yP_Neptuno, dP_Neptuno, diamOrbitaNeptuno, anguloInicialNeptuno, incrementAnguloNeptuno;
+  
+
+function setup() {
+    createCanvas(1000, 1000);
+
+  //SOL	
+    centerX = width/2
+    centerY = height/2
+    sunSize = 0.08*min(width, height)
+  
+  //TIERRA
+    dP_Tierra= sunSize*0.5;
+    diamOrbitaTierra= 0.4*min(width, height);
+    anguloInicialTierra= PI/2;
+    incrementAnguloTierra= 0.010;
+	
+  //MERCURIO
+    dP_Mercurio= sunSize*0.1;
+    diamOrbitaMercurio= 0.24*min(width, height);
+    anguloInicialMercurio= 0;
+    incrementAnguloMercurio= 0.030;
+ 
+  //VENUS
+    dP_Venus= sunSize*0.25;
+    diamOrbitaVenus= 0.32*min(width, height);
+    anguloInicialVenus= PI/4;
+    incrementAnguloVenus= 0.012;
+
+  //MARTE
+    dP_Marte= sunSize*0.14;
+    diamOrbitaMarte= 0.48*min(width, height);
+    anguloInicialMarte= 3*PI/4;
+    incrementAnguloMarte= 0.008;
+	
+  //JÚPITER
+    dP_Júpiter= sunSize*0.7;
+    diamOrbitaJúpiter= 0.6*min(width, height);
+    anguloInicialJúpiter= PI;
+    incrementAnguloJúpiter= 0.004;
+	
+  //SATURNO
+    dP_Saturno = 0.60*sunSize;
+    diamOrbitaSaturno = 0.72 * min(width, height);
+    anguloInicialSaturno = 5*PI/4;
+    incrementAnguloSaturno = 0.003;
+
+  //URANO
+    dP_Urano = 0.40*sunSize;
+    diamOrbitaUrano = 0.84 * min(width, height);
+    anguloInicialUrano = 3*PI/2;
+    incrementAnguloUrano = 0.002;
+
+  //NEPTUNO
+    dP_Neptuno = 0.38*sunSize;
+    diamOrbitaNeptuno = 0.96 * min(width, height);
+    anguloInicialNeptuno = 7*PI/4;
+    incrementAnguloNeptuno = 0.0015;
+
+  }
+
+  function draw() {
+    background(10);     
+	
+	//sol
+    fill(255, 210, 0);
+    stroke(0);
+    circle(centerX, centerY, sunSize*2);
+
+	//órbitas
+    noFill();
+    stroke(255);
+    strokeWeight(1);
+    circle(width/2, height/2, diamOrbitaTierra);
+    circle(width/2, height/2, diamOrbitaMercurio);
+    circle(width/2, height/2, diamOrbitaVenus);
+    circle(width/2, height/2, diamOrbitaMarte);
+    circle(width/2, height/2, diamOrbitaJúpiter);
+    circle(width/2, height/2, diamOrbitaSaturno);
+    circle(width/2, height/2, diamOrbitaUrano);
+    circle(width/2, height/2, diamOrbitaNeptuno);
+
+	//tierra
+    fill(123, 160, 91);
+    stroke(0);
+    circle(xP_Tierra, yP_Tierra, dP_Tierra);
+    
+	//mercurio
+    fill(100);
+    stroke(0);
+    circle(xP_Mercurio, yP_Mercurio, dP_Mercurio);
+    
+    //venus
+    fill(205, 133, 63);
+    stroke(0);
+    circle(xP_Venus, yP_Venus, dP_Venus);
+
+    //marte
+    fill(227, 66, 51);
+    stroke(0);
+    circle(xP_Marte, yP_Marte, dP_Marte);
+	
+    //júpiter
+    fill(255, 222, 179);
+    stroke(0);
+    circle(xP_Júpiter, yP_Júpiter, dP_Júpiter);
+
+    //saturno
+    fill(222, 184, 135);
+    stroke(0);
+    circle(xP_Saturno, yP_Saturno, dP_Saturno);
+
+    //urano
+    fill(176, 196, 222);
+    stroke(0);
+    circle(xP_Urano, yP_Urano, dP_Urano);
+
+    //neptuno
+    fill(0, 71, 171);
+    stroke(0);
+    circle(xP_Neptuno, yP_Neptuno, dP_Neptuno);
+
+//variables
+    
+    //Tierra
+    xP_Tierra = centerX + cos(anguloInicialTierra)*diamOrbitaTierra / 2;
+    yP_Tierra = centerY + sin(anguloInicialTierra)*diamOrbitaTierra / 2;
+    anguloInicialTierra += incrementAnguloTierra;
+
+    //Mercurio
+    xP_Mercurio = centerX + cos(anguloInicialMercurio)*diamOrbitaMercurio / 2;
+    yP_Mercurio = centerY + sin(anguloInicialMercurio)*diamOrbitaMercurio / 2;
+    anguloInicialMercurio += incrementAnguloMercurio;
+
+    //Venus
+    xP_Venus = centerX + cos(anguloInicialVenus)*diamOrbitaVenus / 2;
+    yP_Venus = centerY + sin(anguloInicialVenus)*diamOrbitaVenus / 2;
+    anguloInicialVenus += incrementAnguloVenus;
+
+    //Marte
+    xP_Marte = centerX + cos(anguloInicialMarte)*diamOrbitaMarte / 2;
+    yP_Marte = centerY + sin(anguloInicialMarte)*diamOrbitaMarte / 2;
+    anguloInicialMarte += incrementAnguloMarte;
+
+    //Júpiter
+    xP_Júpiter = centerX + cos(anguloInicialJúpiter)*diamOrbitaJúpiter / 2;
+    yP_Júpiter = centerY + sin(anguloInicialJúpiter)*diamOrbitaJúpiter / 2;
+    anguloInicialJúpiter += incrementAnguloJúpiter;
+
+    //Saturno
+    xP_Saturno = centerX + cos(anguloInicialSaturno) * diamOrbitaSaturno / 2;
+    yP_Saturno = centerY + sin(anguloInicialSaturno) * diamOrbitaSaturno / 2;
+    anguloInicialSaturno += incrementAnguloSaturno;
+
+    //Urano
+    xP_Urano = centerX + cos(anguloInicialUrano)*diamOrbitaUrano / 2;
+    yP_Urano = centerY + sin(anguloInicialUrano)*diamOrbitaUrano / 2;
+    anguloInicialUrano += incrementAnguloUrano;
+
+    //Neptuno
+    xP_Neptuno = centerX + cos(anguloInicialNeptuno)*diamOrbitaNeptuno / 2;
+    yP_Neptuno = centerY + sin(anguloInicialNeptuno)*diamOrbitaNeptuno / 2;
+    anguloInicialNeptuno += incrementAnguloNeptuno;
+
+
+
+
+
+ 
+
+
+
+  }
+  </script>
+  </body>
+</html>
