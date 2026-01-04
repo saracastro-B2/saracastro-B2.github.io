@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>T7 · v3 — Sol + Luna + Cielos adelantados</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+  </head>
+  <body>
+  <script>
+  
+   let xS, yS, dS, rS, vS;
+   let xL, yL, dL, rL, vL;   
+   let dia, mes, año;
+   
+  function setup() {
+  createCanvas(900, 500);
+
+  dS = 0.18 * width;        
+  rS = dS / 2;
+  yS = 0.35 * height;     
+  xS = -rS;                 
+  vS = width / 300;         
+  
+  dL = dS * 0.5; 
+  rL = dL / 2; 
+  xL = -width - rL*5; 
+  yL = height / 3;
+  vL = vS;
+
+  dia = 1;
+  mes = 1;
+  año = 2025;
+} 
+  function draw() {
+  // 3.1 Fondo decidido por la posición del Sol (if … else)
+      if (xS <= width + rS) {
+        background(0, 0, 255); // día
+      } else {
+        background(10); // noche
+       }
+
+
+  // 3.2 Suelo (decoración)
+  noStroke();
+  fill(20, 120, 40);
+  rect(0, 0.8*height, width, 0.2*height);
+
+  // 3.3 Sol (si está fuera, no se verá)
+  noStroke();
+  fill(255, 210, 0);
+  circle(xS, yS, dS);
+
+  //Luna
+  noStroke();
+  fill(200);
+  circle(xL, yL, dL);
+  
+
+
+  // 3.4 Movimiento constante
+   xS = xS + vS;
+   xL = xL + vL;
+  
+  
+  // 3.5 Reinicio por posición (noche suficientemente larga)
+  if (xS > 2 * width + rS) {
+    xS = -rS;
+    xL = -width - rL;
+ 
+    dia = dia + 1;
+
+  //dia
+  if (dia > 30) {
+    dia = 1;
+    mes = mes + 1;
+      }
+
+  //mes
+  if (mes > 12) {
+     mes = 1;
+     año = año + 1;
+      }
+    }
+  //texto
+    noStroke();
+
+  //color
+  if (xS <= width + rS) {fill(0); } 
+  else {fill(255);  }
+
+    textSize(30);
+    text("Fecha: ("+dia+")("+mes+")("+año+")", 30, 40);
+  }
+  </script>
+  </body>
+</html>
