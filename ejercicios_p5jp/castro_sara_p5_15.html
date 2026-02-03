@@ -1,0 +1,181 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>T7 · v3 — Sol + Luna + Cielos adelantados</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+  </head>
+  <body>
+  <script>
+  
+   let xS, yS, dS, rS, vS;
+   let xL, yL, dL, rL, vL;   
+   let dia, mes, año;
+   
+   let xP, yP, S, vP;          
+   let groundY, vY, jumpV, g;    
+        
+   let xD, yD, tD, vD, disparoActivo;
+
+
+function setup() {
+
+  createCanvas(900, 500);
+
+  //Sol
+  dS = 0.18 * width;        
+  rS = dS / 2;
+  yS = 0.35 * height;     
+  xS = -rS;                 
+  vS = width / 300;         
+  
+  //Luna
+  dL = dS * 0.5; 
+  rL = dL / 2; 
+  xL = -width - rL*5; 
+  yL = height / 3;
+  vL = vS;
+  
+  //Fecha
+  dia = 1;
+  mes = 1;
+  año = 2025;
+  
+  //Stickman
+  groundY = 0.80 * height;
+  S  = 0.12 * min(width, height);
+  xP = 0.25 * width;
+  yP = groundY;                 
+  vP = width / 150;
+  vY = 0;
+  jumpV = -0.03 * height;      
+  g = 0.0016 * height;     
+
+  //Disparo
+  disparoActivo = false;
+  tD = 0.02 * width;
+  vD = 0.025 * height;
+}
+
+function draw() {
+     if (xS <= width + rS) background(0, 0, 255); 
+     else background(10);
+	   
+     if (keyIsDown(LEFT_ARROW)) xP = xP - vP;
+     if (keyIsDown(RIGHT_ARROW)) xP = xP + vP;
+     if (xP < 0) xP = 0;
+     if (xP > width) xP = width;
+	   
+  //Movimiento
+     xS = xS + vS;
+     xL = xL+vL;
+   
+  //Reinicio noche
+     actualizarCalendario()
+   
+ //Suelo 
+     noStroke();
+     fill(20, 120, 40);
+     rect(0, groundY, width, height - groundY);
+  
+     dibujarSol();
+     dibujarLuna();
+     dibujarStickman();
+
+ //movimiento stickman
+     vY = vY + g;
+     yP = yP + vY;   
+     if (yP > groundY) { yP = groundY; vY = 0; }
+  
+  // Disparo
+  if (disparoActivo) {
+    yD = yD - vD;
+    dibujarDisparo();
+    if (yD < 0) { disparoActivo = false; }
+  }
+  
+  //texto
+  noStroke();
+  if (xS <= width + rS) {fill(0); } 
+  else {fill(255);  }
+  textSize(30);
+  text("Fecha: ("+dia+")("+mes+")("+año+")", 30, 40);
+}
+
+function keyPressed() {
+  if (keyCode == UP_ARROW){
+vY = jumpV;
+}
+  else if (yP == groundY) {
+    vY = 0;
+    }
+ if (keyCode == 32) {
+    disparoActivo = true;
+    xD = xP;
+    yD = yP - S;
+    }
+}
+
+function dibujarSol() {
+  noStroke();
+  fill(255, 210, 0);
+  circle(xS, yS, dS); }
+
+function dibujarLuna() {
+  noStroke();
+  fill(200);
+  circle(xL, yL, dL); }
+
+function dibujarDisparo() {
+  fill(255, 255, 0);
+  noStroke();
+  ellipse(xD, yD, tD); }
+
+function actualizarCalendario() { 
+   if (xS > 2 * width + rS) { xS = -rS;
+   xL = -width - rL*5;
+   dia = dia + 1; }
+
+   //dia
+   if (dia > 30) { dia = 1;
+   mes = mes + 1; }
+
+  //mes
+  if (mes > 12) { mes = 1;
+  año = año + 1; }
+ }
+ 
+function dibujarStickman() {
+
+  let rHead = 0.20 * S;
+  let bodyL = 0.60 * S;
+  let armL  = 0.45 * S;
+  let legL  = 0.55 * S;
+  let hipY = yP - legL;        
+  let shoulderY = hipY - bodyL; 
+  let headY = shoulderY - rHead;
+  
+  //stickman
+  stroke(255);
+  strokeWeight(0.06 * S);
+  noFill();
+
+  // Cabeza
+  circle(xP, headY, 2 * rHead);
+
+  // Tronco
+  line(xP, shoulderY, xP, hipY);
+
+  // Brazos 
+  line(xP - 0.25*S, shoulderY, xP + 0.25*S, shoulderY);
+  line(xP - 0.25*S, shoulderY, xP - 0.25*S, shoulderY + armL);
+  line(xP + 0.25*S, shoulderY, xP + 0.25*S, shoulderY + armL);
+
+  // Piernas
+  line(xP, hipY, xP - 0.18*S, yP);
+  line(xP, hipY, xP + 0.18*S, yP);
+}
+  </script>
+  </body>
+</html>
