@@ -36,7 +36,23 @@
   <div>
    <h3> Explicación de cómo funciona el código</h3>
 
-   <p> Sustituye este párrafo por una explicación, en varios párrafos de lo que hace el script, bloque a bloque, que habéis utilizado para la tarea. Es un script muy avanzado para vosotros, pero sí estáis en condiciones de analizarlo parte a parte y ver que hace cada parte. Cuanto mejor esté explicado, mejor será la nota en la tarea. Una explicación de un párrafo tendrá poca nota </p>
+   <p> Abrir la cámara:
+Cuando el usuario pulsa “Iniciar cámara”, el sistema pide permiso para usar la cámara. Si se acepta, el video aparece en pantalla.
+
+Cargar el modelo:
+Al empezar, se carga un modelo llamado COCO-SSD, que sirve para reconocer objetos como personas, animales o vehículos.
+
+Mostrar lo que detecta:
+Cuando el modelo reconoce algo, dibuja un rectángulo alrededor del objeto y muestra su nombre junto con el porcentaje de seguridad.
+
+Elegir el más seguro:
+Si detecta varios objetos, se queda con el que tiene mayor porcentaje de confianza y lo muestra como la mejor detección.
+
+Detectar todo el tiempo:
+La detección se repite constantemente mientras la cámara está encendida, para que funcione en tiempo real.
+
+Si hay errores:
+Si ocurre algún problema (por ejemplo, no se puede usar la cámara), se muestra un mensaje de error y se desactiva el botón. </p>
 
   </div>
 
@@ -136,4 +152,5 @@
     });
   </script>
 </body>
+
 </html>
